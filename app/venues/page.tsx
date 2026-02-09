@@ -1,5 +1,4 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -19,7 +18,6 @@ import {
 } from "@/components/ui/select"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
-import Loading from "./loading"
 
 const venues = [
   {
@@ -119,7 +117,6 @@ const venues = [
     description: "Industrial space hosting hip-hop, electronic, and live performances.",
   },
 ]
-
 export default function VenuesPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [venueType, setVenueType] = useState("all")
@@ -155,7 +152,7 @@ export default function VenuesPage() {
                 />
               </div>
               <Select value={venueType} onValueChange={setVenueType}>
-                <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectTrigger className="w-full sm:w-45">
                   <SelectValue placeholder="Venue type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -182,14 +179,14 @@ export default function VenuesPage() {
               {filteredVenues.map((venue) => (
                 <Link key={venue.id} href={`/venues/${venue.id}`}>
                   <Card className="group overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300 h-full">
-                    <div className="relative aspect-[4/3] overflow-hidden">
+                    <div className="relative aspect-4/3 overflow-hidden">
                       <Image
                         src={venue.image || "/placeholder.svg"}
                         alt={venue.name}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
                       <Badge className="absolute top-3 left-3 bg-background/90 text-foreground backdrop-blur-sm">
                         {venue.type}
                       </Badge>
@@ -227,8 +224,4 @@ export default function VenuesPage() {
       <Footer />
     </div>
   )
-}
-
-export function Loading() {
-  return null
 }

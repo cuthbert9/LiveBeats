@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/select"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
-import Loading from "./loading"
 
 const artists = [
   {
@@ -165,7 +164,7 @@ export default function ArtistsPage() {
                 />
               </div>
               <Select value={genre} onValueChange={setGenre}>
-                <SelectTrigger className="w-full sm:w-[180px]">
+                <SelectTrigger className="w-full sm:w-45">
                   <SelectValue placeholder="Genre" />
                 </SelectTrigger>
                 <SelectContent>
@@ -205,7 +204,7 @@ export default function ArtistsPage() {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
                       <div className="absolute bottom-4 left-4 right-4">
                         <Badge className="bg-primary/90 text-primary-foreground mb-2">{artist.genre}</Badge>
                         <h3 className="font-serif text-xl font-semibold text-white">{artist.name}</h3>
@@ -236,8 +235,4 @@ export default function ArtistsPage() {
       <Footer />
     </div>
   )
-}
-
-export function Loading() {
-  return null
 }

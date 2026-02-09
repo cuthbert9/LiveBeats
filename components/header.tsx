@@ -12,17 +12,19 @@ import {
 } from "@/components/ui/sheet"
 
 const navigation = [
+  { name: "Weddings", href: "/weddings" },
   { name: "Events", href: "/events" },
   { name: "Calendar", href: "/calendar" },
   { name: "Venues", href: "/venues" },
-  { name: "Artists", href: "/artists" },
+  { name: "Artists", href: "/artists" }
+
 ]
 
 export function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -77,7 +79,7 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetContent side="right" className="w-75 sm:w-100">
               <nav className="flex flex-col gap-4 mt-8">
                 {navigation.map((item) => (
                   <Link

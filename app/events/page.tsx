@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/select"
 import { useSearchParams } from "next/navigation"
 import { Suspense } from "react"
-import Loading from "./loading"
 
 const allEvents: Event[] = [
   {
@@ -164,9 +163,9 @@ export default function EventsPage() {
     const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.artist.toLowerCase().includes(searchQuery.toLowerCase()) ||
       event.venue.toLowerCase().includes(searchQuery.toLowerCase())
-    
-    const matchesGenre = activeFilters.length === 0 || 
-      activeFilters.some(filter => 
+
+    const matchesGenre = activeFilters.length === 0 ||
+      activeFilters.some(filter =>
         event.genre.toLowerCase() === filter.toLowerCase() ||
         (filter === "Free" && event.price === "Free")
       )
@@ -234,18 +233,18 @@ export default function EventsPage() {
           <div className="container mx-auto px-4">
             <div className="flex gap-8">
               {/* Filters sidebar */}
-              <EventsFilters 
-                activeFilters={activeFilters} 
-                onFilterChange={setActiveFilters} 
+              <EventsFilters
+                activeFilters={activeFilters}
+                onFilterChange={setActiveFilters}
               />
 
               {/* Events grid */}
               <div className="flex-1">
                 {/* Mobile filters row */}
                 <div className="flex items-center gap-4 mb-6 lg:hidden">
-                  <EventsFilters 
-                    activeFilters={activeFilters} 
-                    onFilterChange={setActiveFilters} 
+                  <EventsFilters
+                    activeFilters={activeFilters}
+                    onFilterChange={setActiveFilters}
                   />
                 </div>
 
@@ -262,9 +261,9 @@ export default function EventsPage() {
                       : "space-y-4"
                   }>
                     {filteredEvents.map((event) => (
-                      <EventCard 
-                        key={event.id} 
-                        event={event} 
+                      <EventCard
+                        key={event.id}
+                        event={event}
                         variant={viewMode === "list" ? "compact" : "default"}
                       />
                     ))}
@@ -278,8 +277,8 @@ export default function EventsPage() {
                     <p className="mt-2 text-muted-foreground">
                       Try adjusting your filters or search query
                     </p>
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       className="mt-4 bg-transparent"
                       onClick={() => {
                         setActiveFilters([])
@@ -307,8 +306,4 @@ export default function EventsPage() {
       <Footer />
     </div>
   )
-}
-
-export function Loading() {
-  return null
 }

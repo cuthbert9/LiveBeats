@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
-import { 
-  Calendar, Clock, MapPin, DollarSign, Share2, Heart, 
+import {
+  Calendar, Clock, MapPin, DollarSign, Share2, Heart,
   ExternalLink, Music, Users, Star, ChevronRight, Ticket
 } from "lucide-react"
 import { Header } from "@/components/header"
@@ -73,7 +73,7 @@ const relatedEvents = [
 
 export default async function EventDetailsPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -88,7 +88,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-          
+
           {/* Back navigation */}
           <div className="absolute top-4 left-4 z-10">
             <Link href="/events">
@@ -125,11 +125,11 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
                     <Badge key={tag} variant="outline">{tag}</Badge>
                   ))}
                 </div>
-                
+
                 <h1 className="font-serif text-3xl md:text-4xl font-bold text-foreground text-balance">
                   {eventData.title}
                 </h1>
-                
+
                 <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                   {eventData.description}
                 </p>
@@ -231,7 +231,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
                     </div>
                   </div>
                 </Link>
-                
+
                 {/* Map placeholder */}
                 <div className="mt-4 rounded-lg bg-muted h-48 flex items-center justify-center">
                   <div className="text-center">
